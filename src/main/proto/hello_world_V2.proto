@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package helloworld;
+
+option java_multiple_files = true;
+option java_package = "ru.afanasyev.grpc";
+option java_outer_classname = "HelloWorldProtoV2";
+
+// The greeting service definition.
+service GreeterV2 {
+  // Sends a greeting
+  rpc SayHelloV2 (HelloRequestV2) returns (HelloResponseV2) {}
+}
+
+// The request message containing the user's name.
+message HelloRequestV2 {
+  string correlationId = 1;
+  string clientName = 2;
+}
+
+// The response message containing the greetings
+message HelloResponseV2 {
+  string correlationId = 1;
+  string hostName = 2;
+}
