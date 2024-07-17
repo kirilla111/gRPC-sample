@@ -4,6 +4,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
+import ru.afanasyev.grpc.BigRequesterGrpc;
+import ru.afanasyev.grpc.BigResponse;
 import ru.afanasyev.grpc.GreeterGrpc;
 import ru.afanasyev.grpc.GreeterV2Grpc;
 import ru.afanasyev.grpc.HelloRequest;
@@ -22,6 +24,7 @@ public class HelloWorldServer {
         server = ServerBuilder.forPort(port)
             .addService(new GreeterImpl())
             .addService(new GreeterImplV2())
+            .addService(new BigRequestImpl())
             .build()
             .start();
 
@@ -62,6 +65,19 @@ public class HelloWorldServer {
             HelloResponseV2 response = HelloResponseV2.newBuilder()
                 .setCorrelationId(request.getCorrelationId())
                 .setHostName(this.getClass().getSimpleName())
+                .build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }
+
+    private class BigRequestImpl extends BigRequesterGrpc.BigRequesterImplBase {
+        @Override
+        public void callBigRequest(ru.afanasyev.grpc.BigRequest request,
+            io.grpc.stub.StreamObserver<ru.afanasyev.grpc.BigResponse> responseObserver) {
+            log.info("Received message: " + request.toString());
+            BigResponse response = BigResponse.newBuilder()
+                .setCorrelationId(request.getCorrelationId())
                 .build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();

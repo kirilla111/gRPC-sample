@@ -1,0 +1,45 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+package helloworld;
+
+option java_multiple_files = true;
+option java_package = "ru.afanasyev.grpc";
+option java_outer_classname = "BigRequestProto";
+
+// The greeting service definition.
+service BigRequester {
+  // Sends a greeting
+  rpc CallBigRequest (BigRequest) returns (BigResponse) {}
+}
+
+enum RequestEnum {
+  OK = 0;
+  ERROR = 1;
+}
+
+// The request message containing the user's name.
+message BigRequest {
+  string correlationId = 1;
+  float floatField = 2;
+  bool boolField = 3;
+  bytes bytesField = 4;
+  ListValue listField = 5;
+  google.protobuf.Timestamp timestampField = 6;
+  RequestEnum enumField = 7;
+  MapValue mapField = 8;
+}
+
+message MapValue {
+  // Unordered map of dynamically typed values.
+  map<string, string> fields = 1;
+}
+
+message ListValue {
+  repeated int32 intField = 1;
+}
+
+// The response message containing the greetings
+message BigResponse {
+  string correlationId = 1;
+}
