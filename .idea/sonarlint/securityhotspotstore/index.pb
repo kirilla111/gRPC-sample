@@ -22,3 +22,7 @@ l
 <src/main/java/ru/afanasyev/grpc/server/HelloWorldServer.java,6\9\69a4f83e16a9ed7d3a7522ee81d58973b1ae641b
 h
 8src/main/java/ru/afanasyev/grpc/client/SimpleClient.java,8\3\83f22e21ed785c59839f7ac041ea777ea2030878
+P
+ src/main/proto/big_request.proto,4\0\4032197421fcc985f3c098b52941e22e99a3b591
+l
+<src/main/java/ru/afanasyev/grpc/client/BigRequestClient.java,b\c\bc50bb544e67e2ef7c5402ceeb6a0f0cae533e02

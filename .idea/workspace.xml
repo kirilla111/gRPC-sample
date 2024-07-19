@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c53367b3-4a19-4ab5-b434-b53cb726d39c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60b5f9ef5b0536c37c69433e60d03244dc85c06d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/1/a1fe5197440f20a92a627b5b701962af71932832" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c85bec66dbaa031f159868320f8c62b0b99cbceb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c85bec66dbaa031f159868320f8c62b0b99cbceb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/0/60b5f9ef5b0536c37c69433e60d03244dc85c06d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/1/a1fe5197440f20a92a627b5b701962af71932832" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/client/BigRequestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/client/BigRequestClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/client/ClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/client/ClientApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/server/HelloWorldServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/afanasyev/grpc/server/HelloWorldServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/big_request.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/big_request.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
       <recent name="ru.afanasyev.grpc.client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientApplication">
+  <component name="RunManager" selected="Application.ServerApplication">
     <configuration name="ClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.afanasyev.grpc.client.ClientApplication" />
       <module name="grpc-sample.main" />
@@ -166,7 +166,10 @@
       <workItem from="1721145242792" duration="1335000" />
       <workItem from="1721159293972" duration="1563000" />
       <workItem from="1721201922749" duration="4000" />
-      <workItem from="1721219677134" duration="2978000" />
+      <workItem from="1721219677134" duration="3598000" />
+      <workItem from="1721285779941" duration="595000" />
+      <workItem from="1721372092045" duration="9431000" />
+      <workItem from="1721403239554" duration="37000" />
     </task>
     <servers />
   </component>
@@ -183,5 +186,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.IOException" package="java.io" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

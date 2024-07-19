@@ -3,7 +3,9 @@ package ru.afanasyev.grpc.server;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import ru.afanasyev.grpc.BigRequest;
 import ru.afanasyev.grpc.BigRequesterGrpc;
 import ru.afanasyev.grpc.BigResponse;
 import ru.afanasyev.grpc.GreeterGrpc;
@@ -72,15 +74,45 @@ public class HelloWorldServer {
     }
 
     private class BigRequestImpl extends BigRequesterGrpc.BigRequesterImplBase {
+
         @Override
-        public void callBigRequest(ru.afanasyev.grpc.BigRequest request,
-            io.grpc.stub.StreamObserver<ru.afanasyev.grpc.BigResponse> responseObserver) {
+        public void callBigRequest(BigRequest request, StreamObserver<BigResponse> responseObserver) {
             log.info("Received message: " + request.toString());
+            sendResponse(request.getCorrelationId(), responseObserver);
+            responseObserver.onCompleted();
+        }
+
+        @Override
+        public StreamObserver<BigRequest> callBigRequestStream(StreamObserver<BigResponse> responseObserver) {
+            return new StreamRequestObserver(responseObserver);
+        }
+
+        private void sendResponse(String correlationId, StreamObserver<BigResponse> responseObserver) {
             BigResponse response = BigResponse.newBuilder()
-                .setCorrelationId(request.getCorrelationId())
+                .setCorrelationId(correlationId)
                 .build();
             responseObserver.onNext(response);
-            responseObserver.onCompleted();
+        }
+
+        @RequiredArgsConstructor
+        private class StreamRequestObserver implements StreamObserver<BigRequest> {
+            private final StreamObserver<BigResponse> responseObserver;
+
+            @Override
+            public void onNext(BigRequest value) {
+                log.info("Received request: {}", value.getCorrelationId());
+                sendResponse(value.getCorrelationId(), responseObserver);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                log.error("Error: ", t);
+            }
+
+            @Override
+            public void onCompleted() {
+                log.info("Stream observation complete");
+            }
         }
     }
 }
